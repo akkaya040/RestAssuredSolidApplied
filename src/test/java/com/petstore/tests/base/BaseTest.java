@@ -17,12 +17,11 @@ import java.util.List;
 @Slf4j
 public abstract class BaseTest {
 
-    // Service instances available to all tests
+    // Service instances
     protected PetService petService;
     protected StoreService storeService;
     protected UserService userService;
 
-    // Track created resources for cleanup
     protected List<Long> createdPetIds;
     protected List<Long> createdOrderIds;
     protected List<String> createdUsernames;
@@ -36,7 +35,6 @@ public abstract class BaseTest {
         storeService = new StoreService();
         userService = new UserService();
 
-        // Initialize cleanup lists
         createdPetIds = new ArrayList<>();
         createdOrderIds = new ArrayList<>();
         createdUsernames = new ArrayList<>();
@@ -48,7 +46,6 @@ public abstract class BaseTest {
     public void tearDown() {
         log.info("========== Test Teardown Started ==========");
 
-        // Clean up created pets
         createdPetIds.forEach(petId -> {
             try {
                 petService.deletePet(petId);
@@ -58,7 +55,6 @@ public abstract class BaseTest {
             }
         });
 
-        // Clean up created orders
         createdOrderIds.forEach(orderId -> {
             try {
                 storeService.deleteOrder(orderId);
@@ -68,7 +64,6 @@ public abstract class BaseTest {
             }
         });
 
-        // Clean up created users
         createdUsernames.forEach(username -> {
             try {
                 userService.deleteUser(username);
@@ -82,21 +77,21 @@ public abstract class BaseTest {
     }
 
     /**
-     * Helper method to track created pet for cleanup
+     * to track created pet for cleanup
      */
     protected void trackPetForCleanup(Long petId) {
         createdPetIds.add(petId);
     }
 
     /**
-     * Helper method to track created order for cleanup
+     * to track created order for cleanup
      */
     protected void trackOrderForCleanup(Long orderId) {
         createdOrderIds.add(orderId);
     }
 
     /**
-     * Helper method to track created user for cleanup
+     * to track created user for cleanup
      */
     protected void trackUserForCleanup(String username) {
         createdUsernames.add(username);
