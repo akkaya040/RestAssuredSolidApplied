@@ -100,8 +100,9 @@ allure serve target/allure-report
 allure generate target/allure-results -o  target/allure-report
 allure open target/allure-report 
 
-
 ```
+<img width="943" height="619" alt="allure-comment" src="https://github.com/user-attachments/assets/b76758c4-4176-4d4d-b268-d5f35a1b3c62" />
+
 
 ## 📊 Reports
 
@@ -110,6 +111,8 @@ After running tests, generate the Allure report:
 ```bash
 mvn allure:serve
 ```
+<img width="1526" height="862" alt="allure-result" src="https://github.com/user-attachments/assets/01ba9528-54d9-4f92-934c-f97195dd9ad3" />
+
 
 The report includes:
 - Test execution summary
